@@ -10,7 +10,6 @@ import {
   Button,
   ListGroupItem,
   FormControl,
-  Form,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
