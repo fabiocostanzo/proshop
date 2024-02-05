@@ -5,15 +5,15 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 
 const HomeScreen = () => {
-  const { data: products, isLoading, isError } = useGetProductsQuery();
+  const { data: products, isLoading, error } = useGetProductsQuery();
 
   return (
     <>
       {isLoading ? (
         <Loader />
-      ) : isError ? (
+      ) : error ? (
         <Message variant="danger">
-          {isError?.data?.message || isError.error}
+          {error?.data?.message || error.error}
         </Message>
       ) : (
         <>

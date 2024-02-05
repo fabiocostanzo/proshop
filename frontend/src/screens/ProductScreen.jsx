@@ -29,7 +29,7 @@ const ProductScreen = () => {
   const {
     data: product,
     isLoading,
-    isError,
+    error,
   } = useGetProductDetailsQuery(productId);
 
   const addToCartHandler = () => {
@@ -45,9 +45,9 @@ const ProductScreen = () => {
 
       {isLoading ? (
         <Loader />
-      ) : isError ? (
+      ) : error ? (
         <Message variant="danger">
-          {isError?.data?.message || isError.error}
+          {error?.data?.message || error.error}
         </Message>
       ) : (
         <Row>
