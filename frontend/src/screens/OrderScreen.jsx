@@ -46,15 +46,15 @@ const OrderScreen = () => {
       const loadPaypalScript = async () => {
         paypalDispatch({
           type: "resetOptions",
-          clientId: paypal.clientId,
-          currency: "EUR",
+          value: {
+            "client-id": paypal.clientId,
+            currency: "EUR",
+          },
         });
         paypalDispatch({ type: "setLoadingStatus", value: "pending" });
       };
-      if (order && order.isPaid) {
-        if (!window.paypal) {
-          loadPaypalScript();
-        }
+      if (order && !order.isPaid) {
+        loadPaypalScript();
       }
     }
   }, [order, paypal, paypalDispatch, loadingPayPal, errorPayPal]);
@@ -87,6 +87,7 @@ const OrderScreen = () => {
         purchase_units: [{ amount: { value: order.totalPrice } }],
       })
       .then((orderId) => {
+        console.log(orderId);
         return orderId;
       });
   }
