@@ -2,7 +2,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button } from "react-bootstrap";
 import { FaTimes } from "react-icons/fa";
 import Message from "../../components/Message";
-import Loader from "../../components/Message";
+import Loader from "../../components/Loader";
 import { useGetOrdersQuery } from "../../slices/ordersApiSlice";
 
 const OrderListScreen = () => {
@@ -15,7 +15,7 @@ const OrderListScreen = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error.message}</Message>
+        <Message variant="danger">{error?.message || error.error}</Message>
       ) : (
         <Table striped hover responsive className="table-sm">
           <thead>
@@ -43,7 +43,7 @@ const OrderListScreen = () => {
                 </td>
                 <td>
                   {order.isDelivered ? (
-                    order.deliveredAt
+                    order.deliveredAt.substring(0, 10)
                   ) : (
                     <FaTimes style={{ color: "red" }} />
                   )}
