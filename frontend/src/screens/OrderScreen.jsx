@@ -83,7 +83,6 @@ const OrderScreen = () => {
         purchase_units: [{ amount: { value: order.totalPrice } }],
       })
       .then((orderId) => {
-        console.log(orderId);
         return orderId;
       });
   }
