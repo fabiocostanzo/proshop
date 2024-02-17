@@ -27,13 +27,13 @@ const ProductListScreen = () => {
     }
   };
 
-  const [deleteProdduct, { isLoading: loadingDelete }] =
+  const [deleteProduct, { isLoading: loadingDelete }] =
     useDeleteProductMutation();
 
   const deleteHandler = async (id) => {
     if (window.confirm("Are you sure?")) {
       try {
-        const res = await deleteProdduct(id).unwrap();
+        const res = await deleteProduct(id).unwrap();
         refetch();
         toast.success(res.message);
       } catch (err) {
