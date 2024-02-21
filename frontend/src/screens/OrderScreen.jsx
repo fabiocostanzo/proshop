@@ -100,7 +100,7 @@ const OrderScreen = () => {
   return isLoading ? (
     <Loader />
   ) : error ? (
-    <Message variant="danger">{error.data.message}</Message>
+    <Message variant="danger">{error?.data?.message || error.error}</Message>
   ) : (
     <>
       <h1>Order n. {order._id}</h1>
@@ -194,12 +194,14 @@ const OrderScreen = () => {
                     <Loader />
                   ) : (
                     <div>
-                      <Button
-                        onClick={onApproveTest}
-                        style={{ marginBottom: "10px" }}
-                      >
-                        Test Pay Order
-                      </Button>
+                      {userInfo.isAdmin && (
+                        <Button
+                          onClick={onApproveTest}
+                          style={{ marginBottom: "10px" }}
+                        >
+                          Test Pay Order
+                        </Button>
+                      )}
                       <div>
                         <PayPalButtons
                           createOrder={createOrder}
