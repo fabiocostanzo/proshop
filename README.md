@@ -1,7 +1,7 @@
 # Proshop
 
 Complete eCommerce web app sample using MERN stack. \
-The production build is hosted on [render](render.com) and you can find it [HERE](https://proshop-a2fe.onrender.com/)\
+The production build is hosted on render.com and you can find it [HERE](https://proshop-a2fe.onrender.com/)\
 (Free plan, could take up to 30 seconds if website is inactive for long)
 
 ## Features
