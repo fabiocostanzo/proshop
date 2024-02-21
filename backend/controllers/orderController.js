@@ -125,7 +125,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 // @route   PUT api/orders/:id/deliver
 // @access  Private/Admin
 const updateOrderToDelivered = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.param.id);
+  const order = await Order.findById(req.params.id);
 
   if (order) {
     order.isDelivered = true;
