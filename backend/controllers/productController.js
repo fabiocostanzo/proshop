@@ -32,7 +32,7 @@ const getProductById = asyncHandler(async (req, res) => {
   throw new Error("Resource not found");
 });
 
-// @desc    Create a  product
+// @desc    Create a product
 // @route   POST api/products
 // @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
@@ -70,8 +70,8 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.category = category;
     product.countInStock = countInStock;
 
-    const updatedProduct = product.save();
-    res.json(updatedProduct);
+    const updatedProduct = await product.save();
+    res.status(201).json(updatedProduct);
   } else {
     res.status(404);
     throw new Error("Resource not found");
